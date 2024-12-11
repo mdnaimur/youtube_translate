@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # 3rd party libery
     'rest_framework',
+    'corsheaders',
     # app
     'video_translate',
 ]
@@ -52,7 +53,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 3rd parthy
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
+
+# host allow
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Replace with your frontend's domain
+    "http://127.0.0.1:3000",
+]
+
 
 ROOT_URLCONF = 'backend.urls'
 
