@@ -30,6 +30,7 @@ class YouTubeTranscriptView(APIView):
             try:
                 transcript = YouTubeTranscriptApi.get_transcript(
                     video_id, languages=['en', 'bn'])
+                print(transcript)
                 return Response({"video_id": video_id, "transcript": transcript}, status=status.HTTP_200_OK)
 
             except TranscriptsDisabled:
