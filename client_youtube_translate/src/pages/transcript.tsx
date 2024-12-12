@@ -36,32 +36,38 @@ export default function TranscriptPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center mb-6">
-        YouTube Transcript Fetcher
-      </h1>
+    <div className="bg-slate-600 max-w-4xl mx-auto p-6">
+      <p className=" text-xl font-bold text-center text-white  mb-6">
+        YouTube Transcript
+      </p>
       <TranscriptForm onSubmit={handleFetchTranscript} />
       {error && <p className="text-red-500 text-center mt-4">{error}</p>}
-      {videoUrl && (
-        <div className="mt-6">
-          <iframe
-            width="100%"
-            height="360"
-            src={`https://www.youtube.com/embed/${videoUrl}`}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="rounded-lg shadow-md"
-          ></iframe>
-        </div>
-      )}
       <div>
-        <h3>Translate is shown</h3>
+        <p className="text-white">Youtube Video player</p>
+        {videoUrl && (
+          <div className="mt-6 mb-6">
+            <iframe
+              width="100%"
+              height="360"
+              src={`https://www.youtube.com/embed/${videoUrl}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="rounded-lg shadow-md"
+            ></iframe>
+          </div>
+        )}
       </div>
-      {transcript && (
-        <TranscriptDisplay transcript={transcript} currentTime={currentTime} />
-      )}
+
+      <div>
+        {transcript && (
+          <TranscriptDisplay
+            transcript={transcript}
+            currentTime={currentTime}
+          />
+        )}
+      </div>
     </div>
   );
 }

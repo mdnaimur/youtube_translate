@@ -1,3 +1,5 @@
+import { ScrollArea } from "./ui/scroll-area";
+
 // Define the type for a transcript item
 interface TranscriptItem {
   start: number;
@@ -19,25 +21,33 @@ export const TranscriptDisplay: React.FC<TranscriptDisplayProps> = ({
   }
 
   return (
-    <div className="mt-8 space-y-4">
-      <h2 className="text-xl font-semibold">Transcript</h2>
-      <ul className="space-y-2">
-        {transcript.map((item, index) => (
-          <li
-            key={index}
-            className={`p-4 rounded-lg shadow-md ${
-              currentTime >= item.start &&
-              (index === transcript.length - 1 ||
-                currentTime < transcript[index + 1].start)
-                ? "bg-blue-100 border-l-4 border-blue-500"
-                : "bg-gray-100"
-            }`}
-          >
-            <strong className="text-blue-600">{item.start.toFixed(2)}s:</strong>{" "}
-            {item.text}
-          </li>
-        ))}
-      </ul>
+    <div className="mt-8 py-9 ">
+      <h2 className="text-xl text-cyan-300 font-semibold items-center pb-2">
+        Transcripts
+      </h2>
+      <ScrollArea className="h-72 w-full bg-black">
+        <div className="p-4">
+          <ul className="space-y-2">
+            {transcript.map((item, index) => (
+              <li
+                key={index}
+                className={`p-2 rounded-lg shadow-md ${
+                  currentTime >= item.start &&
+                  (index === transcript.length - 1 ||
+                    currentTime < transcript[index + 1].start)
+                    ? "bg-blue-100  border-blue-500"
+                    : "text-gray-100"
+                }`}
+              >
+                <strong className="text-yellow-50 pr-2">
+                  {item.start.toFixed(2)}:
+                </strong>{" "}
+                {item.text}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </ScrollArea>
     </div>
   );
 };
