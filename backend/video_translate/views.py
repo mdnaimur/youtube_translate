@@ -22,7 +22,6 @@ class YouTubeTranscriptView(APIView):
         if serializer.is_valid():
             video_url = serializer.validated_data['video_url']
             video_id = self.extract_video_id(video_url)
-            print(video_id)
 
             if not video_id:
                 return Response({"error": "Invalid Youtube URL"}, status=status.HTTP_400_BAD_REQUEST)
@@ -30,7 +29,7 @@ class YouTubeTranscriptView(APIView):
             try:
                 transcript = YouTubeTranscriptApi.get_transcript(
                     video_id, languages=['en', 'bn'])
-                print(transcript)
+
                 return Response({"video_id": video_id, "transcript": transcript}, status=status.HTTP_200_OK)
 
             except TranscriptsDisabled:

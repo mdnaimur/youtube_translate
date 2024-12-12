@@ -5,10 +5,10 @@ interface TranscriptFormProps {
 }
 
 export const TranscriptForm: FC<TranscriptFormProps> = ({ onSubmit }) => {
+  //
   const [videoUrl, setVideoUrl] = useState("");
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(videoUrl);
     if (onSubmit) onSubmit(videoUrl);
   };
 
@@ -25,7 +25,7 @@ export const TranscriptForm: FC<TranscriptFormProps> = ({ onSubmit }) => {
           value={videoUrl}
           onChange={(e) => setVideoUrl(e.target.value)}
           required
-          className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full px-4 py-2 border border-white rounded-md shadow-sm bg-black text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
       <button
